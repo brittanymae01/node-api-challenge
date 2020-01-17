@@ -109,7 +109,38 @@ router.post("/", (req, res) => {
 //     });
 // });
 
-//validation not working cannot seem to validate the id of the project I am posting to
+// working!
+router.post("/:id/actions", (req, res) => {
+  const projectInfo = { ...req.body, project_id: req.params.id };
+  const { description, notes } = req.body;
+
+  if (!description || !notes) {
+    return res.status(404).json({
+      errorMessage: "please provide description or notes"
+    });
+  }
+
+  Projects.get(req.params.id)
+    .then(project => {
+      if (!project) {
+        return res.status(404).json({
+          errorMessage: "could not find project id"
+        });
+      } else {
+        Actions.insert(projectInfo).then(action => {
+          return res.status(201).json(action);
+        });
+      }
+    })
+    .catch(error => {
+      console.log(error);
+      return res.status(500).json({
+        errorMessage: "problem adding post"
+      });
+    });
+});
+
+//no validation for project id
 
 // router.post("/:id/actions", (req, res) => {
 //   const projectInfo = { ...req.body, project_id: req.params.id };
@@ -120,18 +151,9 @@ router.post("/", (req, res) => {
 //       errorMessage: "please provide description or notes"
 //     });
 //   }
-
-//   Projects.getProjectActions(req.params.id)
-//     .then(project => {
-//       if (!project) {
-//         return res.status(404).json({
-//           errorMessage: "could not find project id"
-//         });
-//       } else {
-//         Actions.insert(projectInfo).then(action => {
-//           return res.status(201).json(action);
-//         });
-//       }
+//   Actions.insert(projectInfo)
+//     .then(action => {
+//       return res.status(201).json(action);
 //     })
 //     .catch(error => {
 //       console.log(error);
@@ -140,29 +162,6 @@ router.post("/", (req, res) => {
 //       });
 //     });
 // });
-
-//validation instide the insert method does not work
-
-router.post("/:id/actions", (req, res) => {
-  const projectInfo = { ...req.body, project_id: req.params.id };
-  const { description, notes } = req.body;
-
-  if (!description || !notes) {
-    return res.status(404).json({
-      errorMessage: "please provide description or notes"
-    });
-  }
-  Actions.insert(projectInfo)
-    .then(action => {
-      return res.status(201).json(action);
-    })
-    .catch(error => {
-      console.log(error);
-      return res.status(500).json({
-        errorMessage: "problem adding post"
-      });
-    });
-});
 
 //working
 router.delete("/:id", validateProjectId, (req, res) => {
@@ -182,7 +181,7 @@ router.delete("/:id", validateProjectId, (req, res) => {
     });
 });
 
-//working but i get a funny error in the console when it hits the wrong id
+//working
 router.put("/:id", (req, res) => {
   const { name, description } = req.body;
   Projects.update(req.params.id, req.body)

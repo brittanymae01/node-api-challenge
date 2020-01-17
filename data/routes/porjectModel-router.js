@@ -57,7 +57,7 @@ router.post("/", (req, res) => {
 
   Projects.insert(req.body)
     .then(project => {
-      if (req.body) {
+      if (!name) {
         return res.status(400).json({
           errorMessage: "please provide a name for the project"
         });

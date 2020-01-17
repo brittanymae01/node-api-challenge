@@ -50,23 +50,6 @@ router.get("/:id", (req, res) => {
     });
 });
 
-//not working
-// router.post("/:id", (req, res) => {
-//   //   const projectInfo = { ...req.body, project_id: req.params.id };
-
-//   Actions.insert(req.body)
-//     .then(post => {
-//       return res.status(201).json(post);
-//     })
-//     .catch(error => {
-//       console.log(error);
-//       return res.status(500).json({
-//         errorMessage: "problem adding post"
-//       });
-//     });
-// });
-
-//not working
 router.put("/:id", (req, res) => {
   Actions.update(req.params.id, req.body)
     .then(updated => {

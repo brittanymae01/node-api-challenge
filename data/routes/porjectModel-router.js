@@ -134,12 +134,19 @@ router.post("/:id/actions", (req, res) => {
 
 //working
 router.delete("/:id", validateProjectId, (req, res) => {
-  Projects.remove(req.params.id)
-    .then(deleted => {
-      return res.status(200).json({
-        deleted: `${deleted}`,
-        url: `api/project/${req.params.id}`,
-        operation: `DElETE for project with id ${req.params.id}`
+  Projects.get(req.params.id)
+    .then(project => {
+      if (!project) {
+        return res.status(404).json({
+          errorMessage: "specified id does not exist"
+        });
+      }
+      Projects.remove(req.params.id).then(deleted => {
+        return res.status(200).json({
+          deleted: `${deleted}`,
+          url: `api/project/${req.params.id}`,
+          operation: `DElETE for project with id ${req.params.id}`
+        });
       });
     })
     .catch(error => {

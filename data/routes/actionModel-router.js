@@ -70,12 +70,17 @@ router.put("/:id", (req, res) => {
 
 //working
 router.delete("/:id", (req, res) => {
+  if (!req.params.id) {
+    return res.status(404).json({
+      errorMessage: "the id does not exist for this action"
+    });
+  }
   Actions.remove(req.params.id)
     .then(deleted => {
       return res.status(200).json({
         deleted: `${deleted}`,
-        url: `api/project/${req.params.id}`,
-        operation: `DElETE for project with id ${req.params.id}`
+        url: `api/action/${req.params.id}`,
+        operation: `DElETE for action with id ${req.params.id}`
       });
     })
     .catch(error => {

@@ -1,11 +1,13 @@
 const express = require("express");
 
-// const dbRouter = require("../data/db-router");
+const actionRouter = require("./data/routes/actionModel-router");
+const projectRouter = require("./data/routes/porjectModel-router");
 
 const server = express();
 
 server.use(express.json());
 
-// server.use("/api/posts", dbRouter);
+server.use("/api/projects", projectRouter);
+server.use("/api/actions", actionRouter);
 
 module.exports = server;

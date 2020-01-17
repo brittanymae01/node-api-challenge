@@ -38,34 +38,34 @@ Commit your code regularly and use descriptive messages. This helps both you (in
 
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your Team Lead.
 
-- [ ] Mention two parts of Express that you learned about this week.
+- [x] Mention two parts of Express that you learned about this week.
 
   -Helpers which are extension methods added to the request and response objects.
   Examples of those are response.status() and response.send().
 
 -Routing which is a way to split up your code so it is easier to understand
 
-- [ ] Describe Middleware?
+- [x] Describe Middleware?
 
 Middleware functions can get the request and response objects, operate on them, and (when specified) trigger some action.
 An example go that would be to create a logger function that logs when the action was made.
 
-- [ ] Describe a Resource?
+- [x] Describe a Resource?
 
 In a RESTful Web API everything is a resource. Resources are accessible by a unique URI. We manage those resources with HTTP methods.
 
-- [ ] What can the API return to help clients know if a request was successful?
+- [x] What can the API return to help clients know if a request was successful?
 
 We can send back the HTTP status code in the res.status and also chain the data on to the status in JSON format using .json().
 
-- [ ] How can we partition our application into sub-applications?
+- [x] How can we partition our application into sub-applications?
 
 By using express routers we can split an application into sub-applications to make it cleaner and easier to maintain and understand.
 
 ## Minimum Viable Product
 
-- [ ] Configure an _npm script_ named _"server"_ that will execute your code using _nodemon_. Make _nodemon_ be a development time dependency only, it shouldn't be deployed to production.
-- [ ] Configure an _npm script_ named _"start"_ that will execute your code using _node_.
+- [x] Configure an _npm script_ named _"server"_ that will execute your code using _nodemon_. Make _nodemon_ be a development time dependency only, it shouldn't be deployed to production.
+- [x] Configure an _npm script_ named _"start"_ that will execute your code using _node_.
 
 Design and build the necessary endpoints to:
 

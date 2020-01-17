@@ -5,6 +5,7 @@ const router = express.Router();
 const Actions = require("../helpers/actionModel");
 const Projects = require("../helpers/projectModel");
 
+//working
 router.get("/", (req, res) => {
   Actions.get()
     .then(allActions => {
@@ -31,6 +32,7 @@ router.get("/", (req, res) => {
 //     });
 // });
 
+//working
 router.get("/:id", (req, res) => {
   Projects.getProjectActions(req.params.id)
     .then(projectsActions => {
@@ -50,6 +52,7 @@ router.get("/:id", (req, res) => {
     });
 });
 
+//working
 router.put("/:id", (req, res) => {
   Actions.update(req.params.id, req.body)
     .then(updated => {
@@ -65,6 +68,7 @@ router.put("/:id", (req, res) => {
     });
 });
 
+//working
 router.delete("/:id", (req, res) => {
   Actions.remove(req.params.id)
     .then(deleted => {

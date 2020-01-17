@@ -16,12 +16,12 @@ The Minimum Viable Product must be completed in three hours.
 
 Follow these steps to set up and work on your project:
 
-- [ ] Create a forked copy of this project.
-- [ ] Add your _Team Lead_ as collaborator on Github.
-- [ ] Clone your forked version of the Repository.
-- [ ] Create a new Branch on the clone: git checkout -b `firstName-lastName`.
-- [ ] Implement the project on this Branch, committing changes regularly.
-- [ ] Push commits: git push origin `firstName-lastName`.
+- [x] Create a forked copy of this project.
+- [x] Add your _Team Lead_ as collaborator on Github.
+- [x] Clone your forked version of the Repository.
+- [x] Create a new Branch on the clone: git checkout -b `firstName-lastName`.
+- [x] Implement the project on this Branch, committing changes regularly.
+- [x] Push commits: git push origin `firstName-lastName`.
 
 Follow these steps for completing your project.
 
@@ -40,13 +40,27 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 - [ ] Mention two parts of Express that you learned about this week.
 
+  -Helpers which are extension methods added to the request and response objects.
+  Examples of those are response.status() and response.send().
+
+-Routing which is a way to split up your code so it is easier to understand
+
 - [ ] Describe Middleware?
+
+Middleware functions can get the request and response objects, operate on them, and (when specified) trigger some action.
+An example go that would be to create a logger function that logs when the action was made.
 
 - [ ] Describe a Resource?
 
+In a RESTful Web API everything is a resource. Resources are accessible by a unique URI. We manage those resources with HTTP methods.
+
 - [ ] What can the API return to help clients know if a request was successful?
 
+We can send back the HTTP status code in the res.status and also chain the data on to the status in JSON format using .json().
+
 - [ ] How can we partition our application into sub-applications?
+
+By using express routers we can split an application into sub-applications to make it cleaner and easier to maintain and understand.
 
 ## Minimum Viable Product
 
